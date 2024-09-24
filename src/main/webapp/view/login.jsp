@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +32,9 @@
     </form>
 
     <hr>
-
+	 <p>Forgot your password? 
+	      <button class="btn btn-link" onclick="window.location.href='${pageContext.request.contextPath}/forgotpassword'">Reset Password</button>
+	    </p>
     <!-- Redirect to Register Page -->
     <p>Don't have an account? 
       <button class="btn btn-link" onclick="window.location.href='${pageContext.request.contextPath}/register'">Register</button>

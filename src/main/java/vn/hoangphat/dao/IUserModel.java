@@ -24,5 +24,7 @@ public interface IUserModel {
 	boolean register(String username, String email, String password, String fullname, String image, String phone,
 			int roleid, Date createdate);
 
+	boolean update(UserModel user);
+
 	
 }

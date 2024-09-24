@@ -196,4 +196,25 @@ public class UserDaoImpl extends DBConnection implements IUserModel {
         UserDaoImpl newUser = new UserDaoImpl();
         System.out.println(newUser.findByUsername("newuser2"));
     }
+
+	@Override
+    public boolean update(UserModel user) {
+        String sql = "UPDATE users SET username = ?, password = ?, email = ?, roleid = ?, phone = ?, fullname = ? WHERE id = ?";
+        try {
+            conn = super.getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getPassword());
+            ps.setString(3, user.getEmail());
+            ps.setInt(4, user.getRoleid());
+            ps.setString(5, user.getPhone());
+            ps.setString(6, user.getFullname());
+            ps.setInt(7, user.getId());
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

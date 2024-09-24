@@ -91,5 +91,15 @@ public class UserServiceImpl implements IUserService{
             System.out.println("Login failed with incorrect password");
         }
     }
+
+	@Override
+	public boolean update(UserModel user) {
+        return userDao.update(user);	
+	}
+
+	@Override
+	public void updatePassword(String username, String password) {
+        UserServiceImpl userService = new UserServiceImpl();	
+	}
 	
 }
