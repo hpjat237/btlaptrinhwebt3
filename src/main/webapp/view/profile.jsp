@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="main">
     <div class="container">
         <div class="col-md-12 col-sm-12">
@@ -15,32 +15,32 @@
                                     <label for="username" class="col-lg-4 control-label">Username <span
                                             class="require">*</span></label>
                                     <div class="col-lg-8">
-                                        <input type="text" class="form-control" value="${username}" id="username"
-                                               name="username">
+                                        <input type="text" class="form-control" value="${username}" id="uname"
+                                               name="uname">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="username" class="col-lg-4 control-label">Fullname <span
                                             class="require">*</span></label>
                                     <div class="col-lg-8">
-                                        <input type="text" class="form-control" value="${fullname}" id="fullname"
-                                               name="fullname">
+                                        <input type="text" class="form-control" value="${fullname}" id="fname"
+                                               name="fname">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone" class="col-lg-4 control-label">Phone <span
                                             class="require">*</span></label>
                                     <div class="col-lg-8">
-                                        <input type="text" class="form-control" value="${phone}" id="phone"
-                                               name="phone">
+                                        <input type="text" class="form-control" value="${phone}" id="phn"
+                                               name="phn">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="col-lg-4 control-label">Email <span
                                             class="require">*</span></label>
                                     <div class="col-lg-8">
-                                        <input type="email" class="form-control" value="${email}" id="email"
-                                               name="email">
+                                        <input type="email" class="form-control" value="${email}" id="eml"
+                                               name="eml">
                                     </div>
                                 </div>
                             </fieldset>
@@ -49,15 +49,15 @@
                                 <div class="form-group">
                                     <label for="password" class="col-lg-4 control-label">Password <span class="require">*</span></label>
                                     <div class="col-lg-8">
-                                        <input type="password" class="form-control" id="password" name="password">
+                                        <input type="password" class="form-control" id="password" name="psw">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="confirm-password" class="col-lg-4 control-label">Confirm password <span
                                             class="require">*</span></label>
                                     <div class="col-lg-8">
-                                        <input type="password" class="form-control" id="confirm-password"
-                                               name="confirm-password">
+                                        <input type="password" class="form-control" id="cf-psw"
+                                               name="cf-psw">
                                     </div>
                                 </div>
                             </fieldset>
@@ -96,4 +96,3 @@
         </div>
     </div>
 </div>
-</br>

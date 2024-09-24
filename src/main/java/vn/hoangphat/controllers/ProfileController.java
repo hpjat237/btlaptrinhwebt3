@@ -8,6 +8,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import vn.hoangphat.models.UserModel;
 import vn.hoangphat.service.IUserService;
 import vn.hoangphat.service.impl.UserServiceImpl;
@@ -15,30 +16,48 @@ import vn.hoangphat.service.impl.UserServiceImpl;
 @WebServlet(name = "ProfileController", value = "/profile")
 public class ProfileController extends HttpServlet {
 
-    IUserService userService = new UserServiceImpl();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3752061204314698272L;
+	/**
+	 * 
+	 */
+	IUserService userService = new UserServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Retrieve username from cookie
-        Cookie[] cookies = request.getCookies();
-        String username = null;
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("username")) {
-                    username = cookie.getValue();
-                    break;
-                }
-            }
-        }
+//        Cookie[] cookies = request.getCookies();
+//        String username = null;
+//        if (cookies != null) {
+//            for (Cookie cookie : cookies) {
+//                if (cookie.getName().equals("username")) {
+//                    username = cookie.getValue();
+//                    break;
+//                }
+//            }
+//        }
+    	HttpSession session = request.getSession();
+    	UserModel account = (UserModel) session.getAttribute("account");
+
+    	String username = account.getUsername();
+    	String image = account.getImage();
+    	String fullname = account.getFullname();
+    	String email = account.getEmail();
+    	String phone = account.getPhone();
 
         UserModel user = userService.findByUsername(username);
-
-        // Set attributes in the request
-        request.setAttribute("username", username);
-        request.setAttribute("phone", user.getPhone()); // Example phone number
-        request.setAttribute("fullname", user.getFullname()); // Example full name
-        request.setAttribute("email", user.getEmail()); // Example email
-        request.setAttribute("message", request.getParameter("message"));
+        if (user == null) {
+        	System.out.println(user);
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+    	request.setAttribute("image", image);
+    	request.setAttribute("username", username);
+    	request.setAttribute("fullname", fullname);
+    	request.setAttribute("email", email);
+    	request.setAttribute("phone", phone);
         request.getRequestDispatcher("/view/profile.jsp").forward(request, response);
     }
 
